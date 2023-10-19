@@ -1,0 +1,12 @@
+.character {
+  height: 800px;
+  max-width: 100%;
+}
+
+.character img {
+  height: 60%;
+  object-fit: contain;
+}
+.character table {
+  margin: 10px auto;
+}
