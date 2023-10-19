@@ -2,14 +2,23 @@ import React from "react";
 import styles from "../../styles/character.module.css";
 import withCountHits from "../WithCountHits";
 import goku from "../../img/goku.png";
+import { actionsType } from "../../App";
 
-function Goku({ name = "Goku", life, hits, countHits }) {
+function Goku({ name, gokuHits, gokuLife, dispatch }) {
+  console.log("rerender goku");
+
   return (
     <div className={styles.character}>
       <h2>{name}</h2>
       <img src={goku} alt={name}></img>
       <br />
-      <button onClick={countHits}>{name} frappe</button>
+      <button
+        onClick={() => {
+          dispatch({ type: actionsType.gokuHit });
+        }}
+      >
+        {name} frappe
+      </button>
       <table>
         <thead>
           <tr>
@@ -19,8 +28,8 @@ function Goku({ name = "Goku", life, hits, countHits }) {
         </thead>
         <tbody>
           <tr>
-            <td>{hits}</td>
-            <td>{life}</td>
+            <td>{gokuHits}</td>
+            <td>{gokuLife}</td>
           </tr>
         </tbody>
       </table>

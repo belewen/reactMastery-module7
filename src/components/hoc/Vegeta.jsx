@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import vegeta from "../../img/vegeta.png";
 import styles from "../../styles/character.module.css";
 import withCountHits from "../WithCountHits";
+import { actionsType } from "../../App";
 
-function Goku({ name, life, hits, countHits }) {
+function Vegeta({ name, vegetaHits, vegetaLife, dispatch }) {
+  console.log("rerender vegeta");
+
+  useEffect(() => {
+    console.log("useEffect vegeta suite à la modif de vegetaLife");
+  }, [vegetaLife]);
+
   return (
     <div className={styles.character}>
       <h2>{name}</h2>
       <img src={vegeta} alt={name}></img>
       <br />
-      <button onClick={countHits}>{name} frappe</button>
+      <button
+        onClick={() => {
+          dispatch({ type: actionsType.vegetaHit });
+        }}
+      >
+        {name} frappe
+      </button>
       <table>
         <thead>
           <tr>
@@ -19,8 +32,8 @@ function Goku({ name, life, hits, countHits }) {
         </thead>
         <tbody>
           <tr>
-            <td>{hits}</td>
-            <td>{life}</td>
+            <td>{vegetaHits}</td>
+            <td>{vegetaLife}</td>
           </tr>
         </tbody>
       </table>
@@ -28,4 +41,4 @@ function Goku({ name, life, hits, countHits }) {
   );
 }
 
-export default withCountHits(Goku);
+export default withCountHits(Vegeta);
