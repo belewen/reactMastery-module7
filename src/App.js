@@ -10,8 +10,8 @@ function App() {
       <h1>High Order Component</h1>
       <hr />
       <div className={styles.hoc}>
-        <Goku></Goku>
-        <Vegeta></Vegeta>
+        <Goku name="Goku"></Goku>
+        <Vegeta name={"Vegeta"}></Vegeta>
       </div>
     </div>
   );
