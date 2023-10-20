@@ -1,9 +1,7 @@
 import React from "react";
 
+// HOC inutile, mais utile pour l'apprentissage
 function withCountHits(CharacterComponent) {
-  const INITIAL_HIT = 0;
-  const INITIAL_LIFE = 100;
-
   function ComponentHits({ ...props }) {
     return <CharacterComponent {...props}></CharacterComponent>;
   }

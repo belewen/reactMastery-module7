@@ -9,11 +9,45 @@
 }
 .character table {
   margin: 10px auto;
+  padding: 10px;
+}
+
+.character th {
+  width: 50px;
+}
+
+.character p {
+  color: red;
+  font-weight: bolder;
 }
 
 .hoc {
   display: flex;
   justify-content: space-around;
   margin-bottom: 30px;
-  background-color: blueviolet;
+  background: linear-gradient(to right, yellow, red);
+}
+
+.character button {
+  --mainColor: green;
+  background-color: var(--mainColor);
+  border: solid 2 px var(--mainColor);
+  height: 3em;
+  margin-top: 2em;
+  padding: 0 1em;
+  text-align: center;
+}
+
+.character button:hover {
+  box-shadow: 4px 4px 6px #888888;
+}
+
+.character button:active {
+  box-shadow: 2px 2px 5px #888888;
+}
+
+.character button:disabled {
+  --maincolorDisabled: grey;
+  background-color: var(--maincolorDisabled);
+  border-color: var(--maincolorDisabled);
 }

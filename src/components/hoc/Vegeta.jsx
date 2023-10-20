@@ -1,18 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 import vegeta from "../../img/vegeta.png";
 import styles from "../../styles/character.module.css";
-import withCountHits from "../WithCountHits";
-import { actionsType } from "./useSkills";
+import withCountHits from "../withCountHits";
+import useSkils, { actionsType } from "./useSkills";
 
-function Vegeta({ name, vegetaHits, vegetaLife, dispatch }) {
+function Vegeta({ name, vegetaHits, vegetaLife, isVegetaDead, dispatch }) {
   return (
     <div className={styles.character}>
       <h2>{name}</h2>
       <img src={vegeta} alt={name}></img>
       <br />
       <button
+        disabled={isVegetaDead}
         onClick={() => {
-          dispatch({ type: actionsType.vegetaHit, payload: { hits: 5 } });
+          dispatch({ type: actionsType.vegetaHit, payload: { hits: 10 } });
         }}
       >
         {name} frappe
@@ -31,6 +32,7 @@ function Vegeta({ name, vegetaHits, vegetaLife, dispatch }) {
           </tr>
         </tbody>
       </table>
+      {isVegetaDead ? <p>Vegeta est mort</p> : null}
     </div>
   );
 }

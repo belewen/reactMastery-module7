@@ -5,7 +5,10 @@ import useSkils from "./useSkills";
 import styles from "../../styles/character.module.css";
 
 function BattleDBZ() {
-  const [characterPropertiesState, dispatch] = useSkils();
+  const [
+    { vegetaHits, gokuHits, vegetaLife, gokuLife, isGokuDead, isVegetaDead },
+    dispatch,
+  ] = useSkils();
   return (
     <div>
       {" "}
@@ -14,14 +17,16 @@ function BattleDBZ() {
       <div className={styles.hoc}>
         <Goku
           name="Goku"
-          gokuLife={characterPropertiesState.gokuLife}
-          gokuHits={characterPropertiesState.gokuHits}
+          gokuHits={gokuHits}
+          gokuLife={gokuLife}
+          isGokuDead={isGokuDead}
           dispatch={dispatch}
         ></Goku>
         <Vegeta
           name={"Vegeta"}
-          vegetaLife={characterPropertiesState.vegetaLife}
-          vegetaHits={characterPropertiesState.vegetaHits}
+          vegetaHits={vegetaHits}
+          vegetaLife={vegetaLife}
+          isVegetaDead={isVegetaDead}
           dispatch={dispatch}
         ></Vegeta>
       </div>

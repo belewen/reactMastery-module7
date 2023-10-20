@@ -1,18 +1,19 @@
 import React from "react";
 import styles from "../../styles/character.module.css";
-import withCountHits from "../WithCountHits";
+import withCountHits from "../withCountHits";
 import goku from "../../img/goku.png";
-import { actionsType } from "./useSkills";
+import useSkils, { actionsType } from "./useSkills";
 
-function Goku({ name, gokuHits, gokuLife, dispatch }) {
+function Goku({ name, gokuHits, gokuLife, isGokuDead, dispatch }) {
   return (
     <div className={styles.character}>
       <h2>{name}</h2>
       <img src={goku} alt={name}></img>
       <br />
       <button
+        disabled={isGokuDead}
         onClick={() => {
-          dispatch({ type: actionsType.gokuHit, payload: { hits: 10 } });
+          dispatch({ type: actionsType.gokuHit, payload: { hits: 15 } });
         }}
       >
         {name} frappe
@@ -31,6 +32,7 @@ function Goku({ name, gokuHits, gokuLife, dispatch }) {
           </tr>
         </tbody>
       </table>
+      {isGokuDead ? <p>Goku est mort</p> : null}
     </div>
   );
 }

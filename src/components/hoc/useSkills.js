@@ -5,7 +5,16 @@ export const actionsType = {
   vegetaHit: "vegetaHit",
 };
 
-const reducer = (state, action) => {
+const initialSkills = {
+  gokuHits: 0,
+  vegetaHits: 0,
+  gokuLife: 100,
+  vegetaLife: 100,
+  isGokuDead: false,
+  isVegetaDead: false,
+};
+
+const defaultReducer = (state, action) => {
   switch (action.type) {
     case actionsType.gokuHit: {
       return {
@@ -26,16 +35,20 @@ const reducer = (state, action) => {
   }
 };
 
-export default function useSkils() {
-  const initialSkills = {
-    gokuHits: 0,
-    vegetaHits: 0,
-    gokuLife: 100,
-    vegetaLife: 100,
-  };
+const custumReducer = (state, action) => {
+  if (state.gokuLife <= action.payload.hits) {
+    return { ...state, isGokuDead: true };
+  }
+  if (state.vegetaLife <= action.payload.hits) {
+    return { ...state, isVegetaDead: true };
+  } else {
+    return defaultReducer(state, action);
+  }
+};
 
+export default function useSkils() {
   const [characterPropertiesState, dispatch] = React.useReducer(
-    reducer,
+    custumReducer,
     initialSkills
   );
 
