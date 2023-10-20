@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/character.module.css";
 import withCountHits from "../WithCountHits";
 import goku from "../../img/goku.png";
-import { actionsType } from "../../App";
+import { actionsType } from "./useSkills";
 
 function Goku({ name, gokuHits, gokuLife, dispatch }) {
   return (

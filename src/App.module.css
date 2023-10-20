@@ -8,10 +8,3 @@
 .App h1 {
   color: red;
 }
-
-.hoc {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 30px;
-  background-color: blueviolet;
-}

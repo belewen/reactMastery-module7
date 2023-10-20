@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import vegeta from "../../img/vegeta.png";
 import styles from "../../styles/character.module.css";
 import withCountHits from "../WithCountHits";
-import { actionsType } from "../../App";
+import { actionsType } from "./useSkills";
 
 function Vegeta({ name, vegetaHits, vegetaLife, dispatch }) {
   return (
@@ -12,7 +12,7 @@ function Vegeta({ name, vegetaHits, vegetaLife, dispatch }) {
       <br />
       <button
         onClick={() => {
-          dispatch({ type: actionsType.vegetaHit, payload: { hits: 15 } });
+          dispatch({ type: actionsType.vegetaHit, payload: { hits: 5 } });
         }}
       >
         {name} frappe
