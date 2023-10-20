@@ -9,42 +9,49 @@ export const actionsType = {
   vegetaHit: "vegetaHit",
 };
 
-function App() {
-  const initialProperties = {
+const reducer = (state, action) => {
+  switch (action.type) {
+    case actionsType.gokuHit: {
+      return {
+        ...state,
+        vegetaLife: state.vegetaLife - action.payload.hits,
+        gokuHits: state.gokuHits + 1,
+      };
+    }
+    case actionsType.vegetaHit: {
+      return {
+        ...state,
+        gokuLife: state.gokuLife - action.payload.hits,
+        vegetaHits: state.vegetaHits + 1,
+      };
+    }
+    default:
+      throw new Error("Ce dispatch est inconnu");
+  }
+};
+
+function useSkils() {
+  const initialSkills = {
     gokuHits: 0,
     vegetaHits: 0,
     gokuLife: 100,
     vegetaLife: 100,
   };
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case actionsType.gokuHit: {
-        return {
-          ...state,
-          vegetaLife: state.vegetaLife - 20,
-          gokuHits: state.gokuHits + 3,
-        };
-      }
-      case actionsType.vegetaHit: {
-        return {
-          ...state,
-          gokuLife: state.gokuLife - 10,
-          vegetaHits: state.vegetaHits + 12,
-        };
-      }
-      default:
-        throw new Error("Ce dispatch est inconnu");
-    }
-  };
-
   const [characterPropertiesState, dispatch] = React.useReducer(
     reducer,
-    initialProperties
+    initialSkills
   );
+
+  return [characterPropertiesState, dispatch];
+}
+
+function App() {
+  const [characterPropertiesState, dispatch] = useSkils();
+
   return (
     <div className={styles.App}>
-      <h1>High Order Component</h1>
+      <h1>High Order Component et useReducer</h1>
       <hr />
       <div className={styles.hoc}>
         <Goku

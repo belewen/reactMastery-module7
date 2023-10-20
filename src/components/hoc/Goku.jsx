@@ -5,8 +5,6 @@ import goku from "../../img/goku.png";
 import { actionsType } from "../../App";
 
 function Goku({ name, gokuHits, gokuLife, dispatch }) {
-  console.log("rerender goku");
-
   return (
     <div className={styles.character}>
       <h2>{name}</h2>
@@ -14,7 +12,7 @@ function Goku({ name, gokuHits, gokuLife, dispatch }) {
       <br />
       <button
         onClick={() => {
-          dispatch({ type: actionsType.gokuHit });
+          dispatch({ type: actionsType.gokuHit, payload: { hits: 10 } });
         }}
       >
         {name} frappe

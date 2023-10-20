@@ -5,12 +5,6 @@ import withCountHits from "../WithCountHits";
 import { actionsType } from "../../App";
 
 function Vegeta({ name, vegetaHits, vegetaLife, dispatch }) {
-  console.log("rerender vegeta");
-
-  useEffect(() => {
-    console.log("useEffect vegeta suite à la modif de vegetaLife");
-  }, [vegetaLife]);
-
   return (
     <div className={styles.character}>
       <h2>{name}</h2>
@@ -18,7 +12,7 @@ function Vegeta({ name, vegetaHits, vegetaLife, dispatch }) {
       <br />
       <button
         onClick={() => {
-          dispatch({ type: actionsType.vegetaHit });
+          dispatch({ type: actionsType.vegetaHit, payload: { hits: 15 } });
         }}
       >
         {name} frappe
